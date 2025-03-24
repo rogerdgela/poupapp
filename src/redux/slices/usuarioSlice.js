@@ -1,8 +1,8 @@
-const { createSlice } = require("@reduxjs/toolkit");
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     nome: "",
-    renda: 0,
+    renda: "",
     objetivoFinanceiro: ""
 }
 const usuarioSlice = createSlice({

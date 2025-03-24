@@ -6,6 +6,8 @@ import { store } from './redux';
 import Home from "./screens/Home/Home.jsx";
 import Cadastro from "./screens/Cadastro/Cadastro.jsx";
 import GlobalStyle from "./GlobalStyle/index.jsx";
+import { Provider } from "react-redux";
+import store from "./redux/store.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +22,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <GlobalStyle />
     <Provider store={store}>
-      <GlobalStyle />
       <RouterProvider router={router} />
     </Provider>
   </StrictMode>
