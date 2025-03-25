@@ -42,7 +42,7 @@ const Cadastro = () => {
             precisamos de algumas informações sobre sua rotina financeira. Vamos
             lá?
           </Description>
-          <Form onSubmit={aoSubmeterFormulario}>
+          <Form>
             <Fieldset>
               <Label htmlFor="nome">Nome</Label>
               <CampoTexto
