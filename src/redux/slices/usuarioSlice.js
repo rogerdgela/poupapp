@@ -4,6 +4,7 @@ const initialState = {
   nome: "",
   renda: "",
   objetivoFinanceiro: "",
+  orcamentoDiario: 0,
 };
 
 const usuarioSlice = createSlice({
@@ -16,9 +17,15 @@ const usuarioSlice = createSlice({
       state.renda = renda;
       state.objetivoFinanceiro = objetivoFinanceiro;
     },
+    defineOrcamentoDiario: (state, action) => {
+      const renda = action.payload;
+      state.renda = parseFloat(renda);
+      state.orcamentoDiario = Math.round(renda / 30);
+    },
   },
 });
 
-export const { defineUsuario } = usuarioSlice.actions;
+
+export const { defineUsuario, defineOrcamentoDiario } = usuarioSlice.actions;
 
 export default usuarioSlice.reducer;

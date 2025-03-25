@@ -16,7 +16,10 @@ import Form from "@components/Form/Form";
 import ilustracao from "@assets/images/ilustracao-cadastro.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { defineUsuario } from "src/redux/slices/usuarioSlice.js";
+import {
+  defineOrcamentoDiario,
+  defineUsuario,
+} from "src/redux/slices/usuarioSlice.js";
 
 const Cadastro = () => {
   const dispatch = useDispatch();
@@ -29,6 +32,7 @@ const Cadastro = () => {
   const aoSubmeterFormulario = (evento) => {
     evento.preventDefault();
     dispatch(defineUsuario({ nome, renda, objetivoFinanceiro }));
+    dispatch(defineOrcamentoDiario(renda));
     navigate("/home");
   };
 

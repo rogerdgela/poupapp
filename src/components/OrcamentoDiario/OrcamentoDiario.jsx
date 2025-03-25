@@ -2,15 +2,22 @@ import Cartao from "../Cartao/Cartao";
 import CartaoCabecalho from "../Cartao/CartaoCabecalho/CartaoCabecalho";
 import CartaoCorpo from "../Cartao/CartaoCorpo/CartaoCorpo";
 import { Descricao } from "../Cartao";
+import { useSelector } from "react-redux";
+
+const formatador = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+  minimumFractionDigits: 2,
+});
 
 const OrcamentoDiario = () => {
-  const orcamentoDiario = 1000;
+  const orcamentoDiario = useSelector((state) => state.usuario.orcamentoDiario);
 
   return (
     <Cartao>
       <CartaoCabecalho>Orçamento diário disponível</CartaoCabecalho>
       <CartaoCorpo>
-        <Descricao>{orcamentoDiario}</Descricao>
+        <Descricao>{formatador.format(orcamentoDiario)}</Descricao>
       </CartaoCorpo>
     </Cartao>
   );
