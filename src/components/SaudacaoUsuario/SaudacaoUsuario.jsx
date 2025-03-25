@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { useSelector } from "react-redux";
 export const Usuario = styled.div`
   grid-area: usuario;
   color: var(--cor-neutra-light);
@@ -14,9 +14,10 @@ export const Usuario = styled.div`
 `;
 
 const SaudacaoUsuario = () => {
+  const { nomeUsuario } = useSelector((state) => state.usuario);
   return (
     <Usuario>
-      <h1>Olá, </h1>
+      <h1>Olá, {nomeUsuario}</h1>
       <p>Veja como estão suas finanças hoje.</p>
     </Usuario>
   );
