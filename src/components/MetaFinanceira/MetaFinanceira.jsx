@@ -3,6 +3,7 @@ import { Cartao, CartaoCabecalho, Descricao } from "@components/Cartao";
 import { CartaoCorpo } from "@components/Cartao";
 import { PigIcon } from "@components/Icones";
 import BarraProgresso from "@components/MetaFinanceira/BarraProgresso/BarraProgresso";
+import { useSelector } from "react-redux";
 
 export const TituloMetaFinanceira = styled.p`
   display: flex;
@@ -15,6 +16,15 @@ export const TituloMetaFinanceira = styled.p`
 `;
 
 const MetaFinanceira = () => {
+  const objetivoFnanceiro = useSelector(
+    (state) => state.usuario.objetivoFinanceiro
+  );
+
+  const objetivosTipos = useSelector(
+    (state) => state.objetivos.objetivo
+  );
+
+  const objetivo = objetivosTipos[objetivoFnanceiro] || "Objetivo não encontrado";
   return (
     <Cartao>
       <CartaoCabecalho>Progresso da meta financeira</CartaoCabecalho>
@@ -22,7 +32,7 @@ const MetaFinanceira = () => {
         <Descricao>
           <TituloMetaFinanceira>
             <PigIcon />
-            Economizar
+            {objetivo}
           </TituloMetaFinanceira>
           <BarraProgresso />
         </Descricao>
