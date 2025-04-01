@@ -6,8 +6,12 @@ import { MoneyIcon } from "@components/Icones";
 import Label from "@components/Label";
 import Modal from "@components/Modal";
 import { SelectGroup, SelectOption } from "@components/Select";
+import { useDispatch } from "react-redux";
+import { adicionaTransacao } from "src/redux/slices/transacoesSlices";
 
 const TransacaoModal = ({ isOpen, onCloseModal }) => {
+  const dispatch = useDispatch();
+
   const [novaTransacao, setNovaTransacao] = useState({
     nome: "",
     valor: 0,
@@ -17,6 +21,7 @@ const TransacaoModal = ({ isOpen, onCloseModal }) => {
   });
 
   const aoSubmeterFormModal = () => {
+    dispatch(adicionaTransacao(novaTransacao));
     onCloseModal();
   };
 
