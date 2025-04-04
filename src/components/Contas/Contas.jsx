@@ -10,7 +10,7 @@ import Label from "@components/Label";
 import Fieldset from "@components/Fieldset";
 import { WalletIcon } from "@components/Icones";
 import CartaoCorpo from "@components/Cartao/CartaoCorpo/CartaoCorpo";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { adicionaConta } from "src/redux/slices/constasSlice";
 
 export const Container = styled(CartaoCorpo)`
@@ -38,7 +38,8 @@ export const ListaMovimentacoes = styled.ul`
   -ms-overflow-style: none;
 `;
 
-const Contas = ({contas}) => {
+const Contas = () => {
+  const contas = useSelector((state) => state.contas.contas);
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [novaConta, setNovaConta] = useState({
