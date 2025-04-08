@@ -12,6 +12,16 @@ import {
   Legend,
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import { useSelector } from "react-redux";
+import gastosPorCategoriaSelector from "src/redux/selectors/gastosPorCategoriaSelector";
+
+const AreaChart = styled.div`
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 ChartJS.register(
   CategoryScale,
@@ -22,13 +32,14 @@ ChartJS.register(
   Legend,
 );
 
-
 const BalancoFinanceiro = () => {
+  const gastosPorCategoria = useSelector(gastosPorCategoriaSelector);
   const data = {
+    labels: Object.keys(gastosPorCategoria),
     datasets: [
       {
         label: "Gastos por categoria",
-        data: [1200, 2000, 3000, 4000, 5000],
+        data: Object.values(gastosPorCategoria),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -48,12 +59,22 @@ const BalancoFinanceiro = () => {
     ],
   };
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: "right",
+      },
+    },
+  };
+
   return (
     <Cartao>
       <CartaoCabecalho>Gastos por categoria</CartaoCabecalho>
       <CartaoCorpo>
         <AreaChart>
-          <Pie data={data} />
+          <Pie data={data} options={options} />
         </AreaChart>
       </CartaoCorpo>
     </Cartao>
