@@ -36,15 +36,15 @@ export const SaldoTransacao = styled.div`
   }
 `;
 
-const formatarValor = (valor) => {
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(valor);
-};
+const formatador = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+  minimumFractionDigits: 2,
+});
 
-const formatarData = (data) => {
-  return new Date(data).toLocaleDateString("pt-BR");
+const formataData = (data) => {
+  const [ano, mes, dia] = data.split("-");
+  return `${dia}/${mes}/${ano}`;
 };
 
 const Transacao = ({ transacao }) => {
@@ -52,10 +52,10 @@ const Transacao = ({ transacao }) => {
     <ItemTransacao>
       <TituloTransacao $tipo={transacao.tipo}>
         <h3>{transacao.nome}</h3>
-        <span>{formatarValor(transacao.valor)}</span>
+        <span>{formatador.format(transacao.valor)}</span>
       </TituloTransacao>
       <SaldoTransacao>
-        <p>{formatarData(transacao.data)}</p>
+        <p>{formataData(transacao.data)}</p>
       </SaldoTransacao>
     </ItemTransacao>
   );

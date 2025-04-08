@@ -5,7 +5,7 @@ import Home from "./screens/Home/Home.jsx";
 import Cadastro from "./screens/Cadastro/Cadastro.jsx";
 import GlobalStyle from "./GlobalStyle/index.jsx";
 import { Provider } from "react-redux";
-import { persistor, store } from "./redux/store.js";
+import store, { persistor } from "./redux/store.js";
 import { PersistGate } from "redux-persist/integration/react";
 
 const router = createBrowserRouter([

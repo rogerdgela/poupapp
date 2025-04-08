@@ -4,7 +4,7 @@ const initialState = {
   objetivo: {
     economizar: "Economizar",
     investir: "Investir",
-    controlarGastos: "Controlar Gastos",
+    "controlar-gastos": "Controlar gastos",
   },
 };
 

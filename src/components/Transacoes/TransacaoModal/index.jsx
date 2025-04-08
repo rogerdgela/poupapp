@@ -9,9 +9,9 @@ import { SelectGroup, SelectOption } from "@components/Select";
 import { useDispatch } from "react-redux";
 import { adicionaTransacao } from "src/redux/slices/transacoesSlices";
 import { atualizaOrcamento } from "src/redux/slices/usuarioSlice";
+
 const TransacaoModal = ({ isOpen, onCloseModal }) => {
   const dispatch = useDispatch();
-
   const [novaTransacao, setNovaTransacao] = useState({
     nome: "",
     valor: 0,
@@ -22,10 +22,12 @@ const TransacaoModal = ({ isOpen, onCloseModal }) => {
 
   const aoSubmeterFormModal = () => {
     dispatch(adicionaTransacao(novaTransacao));
-    dispatch(atualizaOrcamento({
-      valor: novaTransacao.valor,
-      tipo: novaTransacao.tipo,
-    }));
+    dispatch(
+      atualizaOrcamento({
+        valor: novaTransacao.valor,
+        tipo: novaTransacao.tipo,
+      })
+    );
     onCloseModal();
   };
 

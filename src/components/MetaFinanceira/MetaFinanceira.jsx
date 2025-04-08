@@ -16,15 +16,11 @@ export const TituloMetaFinanceira = styled.p`
 `;
 
 const MetaFinanceira = () => {
-  const objetivoFnanceiro = useSelector(
+  const objetivoFinanceiro = useSelector(
     (state) => state.usuario.objetivoFinanceiro
   );
-
-  const objetivosTipos = useSelector(
-    (state) => state.objetivos.objetivo
-  );
-
-  const objetivo = objetivosTipos[objetivoFnanceiro] || "Objetivo não encontrado";
+  const objetivosTipos = useSelector((state) => state.objetivos.objetivo);
+  const objetivos = objetivosTipos[objetivoFinanceiro] || "";
   return (
     <Cartao>
       <CartaoCabecalho>Progresso da meta financeira</CartaoCabecalho>
@@ -32,7 +28,7 @@ const MetaFinanceira = () => {
         <Descricao>
           <TituloMetaFinanceira>
             <PigIcon />
-            {objetivo}
+            {objetivos}
           </TituloMetaFinanceira>
           <BarraProgresso />
         </Descricao>

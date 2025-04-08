@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { calculaMetaSelector } from "../../../redux/selectors/calculaMetaSelector";
+import { calculaMetaSelector } from "src/redux/selectors/calculaMetaSelector";
+import styled from "styled-components";
 
 export const BarraContainer = styled.div`
   background-color: var(--cor-neutra-dark);

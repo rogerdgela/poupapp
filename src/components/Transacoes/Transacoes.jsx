@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 
 const Transacoes = () => {
   const transacoes = useSelector((state) => state.transacoes.transacoes);
-  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {

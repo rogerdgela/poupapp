@@ -13,33 +13,31 @@ import {
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { useSelector } from "react-redux";
-import gastosPorCategoriaSelector from "src/redux/selectors/gastosPorCategoriaSelector";
-
-const AreaChart = styled.div`
-  width: 100%;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import { gastosPorCategoria } from "src/redux/selectors/gastosPorCategoriaSelector";
 
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
   ArcElement,
   Tooltip,
   Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement
 );
 
+export const AreaChart = styled.div`
+  padding: var(--padding-xs);
+  width: 50%;
+  height: 50%;
+`;
+
 const BalancoFinanceiro = () => {
-  const gastosPorCategoria = useSelector(gastosPorCategoriaSelector);
+  const categoriasAgrupada = useSelector(gastosPorCategoria);
   const data = {
-    labels: Object.keys(gastosPorCategoria),
+    labels: Object.keys(categoriasAgrupada),
     datasets: [
       {
         label: "Gastos por categoria",
-        data: Object.values(gastosPorCategoria),
+        data: Object.values(categoriasAgrupada),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -63,7 +61,6 @@ const BalancoFinanceiro = () => {
     responsive: true,
     plugins: {
       legend: {
-        display: true,
         position: "right",
       },
     },
